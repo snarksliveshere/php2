@@ -3,7 +3,9 @@
 namespace App;
 
 
-class Model
+// модели не будет объектов, поэтому делаем его абстрактным
+// используем для наследовании и статики
+abstract class Model
 {
     const TABLE = '';
     public static function findAll()
@@ -13,6 +15,24 @@ class Model
         //'SELECT * FROM' . User::$table,
             'SELECT * FROM '.static::TABLE,
             static::class // имя этого класса
+
         );
+    }
+    public static function findById($id)
+    {
+        $db = new Db();
+        $res = $db->query(
+            'SELECT * FROM '.static::TABLE.' WHERE id = :id',
+            static::class, // имя этого класса
+            array('id'=>$id)
+        );
+        if(!empty($res))
+        {
+            return $res;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

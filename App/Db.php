@@ -18,20 +18,20 @@ class Db
         $this->dbh = new \PDO('mysql:host=127.0.0.1;dbname=php2','root','');
     }
 
-    public function execute($sql)
+    public function execute($sql,$placeholders)
     {
         $sth = $this->dbh->prepare($sql);
-        $res = $sth->execute();
+        $res = $sth->execute($placeholders);
         return $res;
     }
 
-    public function query($sql, $class)
+    public function query($sql,$class,$placeholders=null)
     {
         $sth = $this->dbh->prepare($sql);
-        $res = $sth->execute();
+        $res = $sth->execute($placeholders);
         if(false !== $res)
         {
-            return $sth->fetchAll(\PDO::FETCH_CLASS, $class);
+           return $sth->fetchAll(\PDO::FETCH_CLASS, $class);
         }
         return [];
     }
