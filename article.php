@@ -27,5 +27,6 @@
         include __DIR__.'/App/Views/News.php';
     }
 ?>
+<p><a href="/index.php">назад</a></p>
 </body>
 </html>
