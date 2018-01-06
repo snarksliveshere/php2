@@ -5,4 +5,9 @@ require __DIR__.'/autoload.php';
 $news = \App\Models\News::findAll();
 include __DIR__.'/App/Views/News.php';
 
+$user = new \App\Models\User();
+$user->name = 'John';
+$user->email = 'johndo@doe.eu';
+$user->insert();
+
 
