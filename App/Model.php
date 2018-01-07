@@ -81,7 +81,6 @@ abstract class Model
     }
     public function update($id)
     {
-        $columns = [];
         $values = [];
         $str = '';
         foreach ($this as $k=>$v) {
