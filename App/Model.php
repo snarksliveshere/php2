@@ -36,11 +36,28 @@ abstract class Model
             return false;
         }
     }
+    public static function delete($id)
+    {
+        $db = Db::instance();
+        $res = $db->query(
+            'DELETE FROM '.static::TABLE.' WHERE id = :id',
+            static::class, // имя этого класса
+            array('id'=>$id)
+        );
+        if(!empty($res))
+        {
+            return $res;
+        }
+        else
+        {
+            return false;
+        }
+    }
     public function isNew()
     {
         return empty($this->id);
     }
-    public function insert()
+     public function insert()
     {
         if(!$this->isNew())
         {
@@ -61,5 +78,32 @@ abstract class Model
             ') VALUES ('.implode(',',array_keys($values)).')';
         $db = Db::instance();
         $db->execute($sql,$values);
+    }
+    public function update($id)
+    {
+        $columns = [];
+        $values = [];
+        $str = '';
+        foreach ($this as $k=>$v) {
+            if('id'==$k)
+            {
+                continue;
+            }
+            $values[':'.$k] = $v;
+            $str .= $k.'=:'.$k.',';
+        }
+        $str = substr($str, 0, -1);
+        $values[':id'] = $id;
+        $sql = 'UPDATE '.static::TABLE.' SET '.$str.' WHERE id= :id';
+        $db = Db::instance();
+        $res = $db->query($sql,static::class,$values);
+        if(!empty($res))
+        {
+            return $res;
+        }
+        else
+        {
+            return false;
+        }
     }
 }
