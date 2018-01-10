@@ -9,6 +9,8 @@
 </head>
 <body>
     <?php foreach ($news as $item) :?>
+        <?php var_dump($item) ?>
+        <p>автор: <?=$item->author->name?></p>
         <h2><a href="article.php?id=<?=$item->id?>"><?=$item->title?></a></h2>
         <p><?=$item->content?></p>
     <?php endforeach;?>

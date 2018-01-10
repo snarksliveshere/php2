@@ -24,7 +24,7 @@
     $news = \App\Models\News::findById($id);
     if($news)
     {
-        include __DIR__.'/App/Views/News.php';
+        include __DIR__ . '/App/Views/news.php';
     }
 ?>
 <p><a href="/index.php">назад</a></p>

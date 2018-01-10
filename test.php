@@ -1,8 +1,7 @@
 <?php
 
 require __DIR__.'/autoload.php';
-
-$single = \App\Singleton::instance();
-$single->counter =1;
-var_dump($single);
-?>
+$view = new \App\View();
+$view->news = \App\Models\News::findAll();
+$content_news = $view->render(__DIR__.'/App/templates/news.php');
+echo $content_news;
