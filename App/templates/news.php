@@ -9,7 +9,9 @@
 </head>
 <body>
     <?php foreach ($news as $item) :?>
-        <p>автор: <?=$item->author[0]->name;?></p>
+        <?php if(!empty($item->author)) :?>
+        <p>автор: <?=$item->author->name;?></p>
+        <?php endif;?>
         <h2><a href="article.php?id=<?=$item->id?>"><?=$item->title?></a></h2>
         <p><?=$item->content?></p>
     <?php endforeach;?>

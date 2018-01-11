@@ -26,7 +26,7 @@ abstract class Model
             'SELECT * FROM '.static::TABLE.' WHERE id = :id',
             static::class, // имя этого класса
             array('id'=>$id)
-        );
+        )[0];
         if(!empty($res))
         {
             return $res;

@@ -35,6 +35,11 @@ class News extends Model
         }
     }
 
+    /**
+     * Lazy Load
+     * @param $k
+     * @return bool|null
+     */
     public function __get($k)
     {
         switch ($k)
