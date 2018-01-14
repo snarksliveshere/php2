@@ -20,7 +20,7 @@ class News
     }
     protected function beforeAction()
     {
-       echo 'COUNTER';
+       //echo 'COUNTER';
     }
     protected function actionIndex()
     {

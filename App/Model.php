@@ -59,13 +59,13 @@ abstract class Model
     }
      public function insert()
     {
-        if(!$this->isNew())
-        {
-            return;
-        }
+//        if(!$this->isNew())
+//        {
+//            return;
+//        }
         $columns = [];
         $values = [];
-        foreach ($this as $k=>$v) {
+        foreach ($_POST as $k=>$v) {
             if('id'==$k)
             {
                 continue;
@@ -83,7 +83,7 @@ abstract class Model
     {
         $values = [];
         $str = '';
-        foreach ($this as $k=>$v) {
+        foreach ($_POST as $k=>$v) {
             if('id'==$k)
             {
                 continue;
@@ -104,5 +104,6 @@ abstract class Model
         {
             return false;
         }
+
     }
 }

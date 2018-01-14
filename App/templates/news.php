@@ -12,7 +12,7 @@
         <?php if(!empty($item->author)) :?>
         <p>автор: <?=$item->author->name;?></p>
         <?php endif;?>
-        <h2><a href="article.php?id=<?=$item->id?>"><?=$item->title?></a></h2>
+        <h2><a href="<?=$_SERVER['SCRIPT_NAME'].'?action=One&id='.$item->id?>"><?=$item->title?></a></h2>
         <p><?=$item->content?></p>
     <?php endforeach;?>
 </body>

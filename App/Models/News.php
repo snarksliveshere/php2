@@ -18,16 +18,18 @@ use App\Model;
 class News extends Model
 {
     const TABLE = 'news';
-    public $authors_id;
+    public $author_id;
     public $content;
-    public $date;
-
+    public $id;
     public function __isset($k)
     {
         switch ($k)
         {
             case 'author' :
-                return !empty($this->authors_id);
+                return !empty($this->author_id);
+                break;
+            case 'authors' :
+                return !empty($this->author_id);
                 break;
             default :
                 return false;
@@ -45,7 +47,10 @@ class News extends Model
         switch ($k)
         {
             case 'author' :
-                return Author::findById($this->authors_id);
+                return Author::findById($this->author_id);
+                break;
+            case 'authors' :
+                return Author::findAll();
                 break;
             default :
                 return null;
