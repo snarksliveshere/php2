@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: -
- * Date: 04.01.2018
- * Time: 13:31
- */
 
 namespace App;
 
@@ -16,7 +10,16 @@ class Db
 
     protected function __construct()
     {
-        $this->dbh = new \PDO('mysql:host=127.0.0.1;dbname=php2','root','');
+        try
+        {
+            $this->dbh = new \PDO('mysql:host=127.0.0.1;dbname=php2','root','1');
+        }
+        catch (\PDOException $e)
+        {
+            throw new \App\Exceptions\Db();
+        }
+
+
     }
 
     public function execute($sql,$placeholders=[])
