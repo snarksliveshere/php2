@@ -10,9 +10,11 @@
 <body>
 <?php
 //var_dump($GLOBALS);
-
-
-?>
+foreach ($errors as $error):?>
+    <div class="alert alert-danger">
+        <?=$error->getMessage?>
+    </div>
+<?php endforeach;?>
 
 <h1>Одна новость</h1>
 <form action="<?=$_SERVER['SCRIPT_NAME'].'?action=Create'?>" method="post">

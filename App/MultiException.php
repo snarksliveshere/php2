@@ -1,7 +1,10 @@
 <?php
+
 namespace App;
 
-class Collection
+
+class MultiException
+    extends \Exception
     implements \ArrayAccess, \Iterator
 {
     use TCollection;
