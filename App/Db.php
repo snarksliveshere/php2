@@ -5,7 +5,7 @@ namespace App;
 
 class Db
 {
-    use Singleton;
+    use \lib\Singleton;
     protected $dbh;
 
     protected function __construct()
