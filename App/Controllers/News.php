@@ -33,11 +33,21 @@ class News
         $this->view->news = \App\Models\News::findAll();
         $this->view->display(__DIR__.'/../templates/news.php');
     }
+    protected function actionError404()
+    {
+        $this->view->title = 'ERROR 404';
+        $this->view->display(__DIR__.'/../templates/error404.php');
+    }
     protected function actionOne()
     {
         $id = (int)$_GET['id'];
         $this->view->article = \App\Models\News::findById($id);
+        if(!$this->view->article)
+        {
+            throw new \App\Exceptions\Error404();
+        }
         $this->view->display(__DIR__.'/../templates/one.php');
+
     }
     protected function actionCreate()
     {

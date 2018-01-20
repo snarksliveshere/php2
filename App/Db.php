@@ -12,7 +12,7 @@ class Db
     {
         try
         {
-            $this->dbh = new \PDO('mysql:host=127.0.0.1;dbname=php2','root','1');
+            $this->dbh = new \PDO('mysql:host=127.0.0.1;dbname=php2','root','');
         }
         catch (\PDOException $e)
         {

@@ -63,7 +63,7 @@ class Admin
     {
         if(!empty($_POST))
         {
-            $this->view->article = \App\Models\News::insert();
+            $this->view->article = \App\Models\News::insert($_POST);
             $this->view->news = \App\Models\News::findAll();
             $this->view->display(__DIR__.'/../templates/admin_news.php');
         }

@@ -57,7 +57,7 @@ abstract class Model
     {
         return empty($this->id);
     }
-     public function insert()
+     public function insert(array $data)
     {
 //        if(!$this->isNew())
 //        {
@@ -65,7 +65,7 @@ abstract class Model
 //        }
         $columns = [];
         $values = [];
-        foreach ($_POST as $k=>$v) {
+        foreach ($data as $k=>$v) {
             if('id'==$k)
             {
                 continue;
