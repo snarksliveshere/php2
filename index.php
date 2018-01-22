@@ -1,5 +1,6 @@
 <?php
 require __DIR__.'/autoload.php';
+PHP_Timer::start();
 $url = $_SERVER['REQUEST_URI'];
 // далее разобрать, какой адрес ввел пользователь и какой контроллер action вызывать
 $controller = new \App\Controllers\News();
@@ -23,6 +24,13 @@ catch (\App\Exceptions\Error404 $e)
     $view->display(__DIR__.'/App/templates/error404.php');
 
 }
+
+
+
+
+$time = PHP_Timer::stop();
+print PHP_Timer::resourceUsage();
+
 
 
 
