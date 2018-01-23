@@ -1,6 +1,13 @@
 <?php
 require __DIR__.'/autoload.php';
 PHP_Timer::start();
+Twig_Autoloader::register();
+$loader = new Twig_Loader_Filesystem('App/templates');
+$twig = new Twig_Environment($loader, array(
+    'cache'       => 'cache',
+    'auto_reload' => true
+));
+
 $url = $_SERVER['REQUEST_URI'];
 // далее разобрать, какой адрес ввел пользователь и какой контроллер action вызывать
 $controller = new \App\Controllers\News();

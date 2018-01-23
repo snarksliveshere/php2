@@ -32,6 +32,7 @@ class News
         $this->view->title = 'Lazy Load';
         $this->view->news = \App\Models\News::findAll();
         $this->view->display(__DIR__.'/../templates/news.php');
+        //echo $twig->render('books.html', array('books' => $books));
     }
     protected function actionError404()
     {
@@ -47,6 +48,7 @@ class News
             throw new \App\Exceptions\Error404();
         }
         $this->view->display(__DIR__.'/../templates/one.php');
+        //echo $twig->render('books.html', array('books' => $books));
 
     }
     protected function actionCreate()
